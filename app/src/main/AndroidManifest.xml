@@ -1,0 +1,32 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+          package="com.feragusper.atlaslite">
+
+    <!--Permissions-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application android:allowBackup="true"
+                 android:label="@string/app_name"
+                 android:name=".common.AtlasLiteApplication"
+                 android:icon="@mipmap/ic_launcher"
+                 android:roundIcon="@mipmap/ic_launcher_round"
+                 android:supportsRtl="true"
+                 android:theme="@style/AppTheme"
+                 tools:ignore="AllowBackup,GoogleAppIndexingWarning">
+
+        <!--Activities-->
+        <activity
+                android:name=".common.navigation.RouteActivity"
+                android:noHistory="true"
+                android:theme="@style/AppTheme.Translucent">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+                android:name=".countries.android.activity.CountriesActivity"
+                android:label="@string/countries_screen_title" />
+
+    </application>
+</manifest>
