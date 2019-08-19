@@ -1,8 +1,13 @@
 package com.feragusper.atlaslite.countries.android.fragment
 
+import android.app.SearchManager
+import android.content.Context.SEARCH_SERVICE
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import androidx.annotation.StringRes
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.feragusper.atlaslite.R
 import com.feragusper.atlaslite.common.android.BaseFragment
@@ -15,6 +20,7 @@ import com.feragusper.atlaslite.countries.domain.Country
 import com.feragusper.atlaslite.countries.exception.CountryFailure
 import kotlinx.android.synthetic.main.fragment_countries.*
 import javax.inject.Inject
+
 
 class CountriesFragment : BaseFragment() {
 
@@ -35,6 +41,8 @@ class CountriesFragment : BaseFragment() {
             observe(countries, ::renderCountryList)
             failure(failure, ::handleFailure)
         }
+
+        setHasOptionsMenu(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -78,4 +86,32 @@ class CountriesFragment : BaseFragment() {
         hideProgress()
         notifyWithAction(message, R.string.action_refresh, ::loadCountriesList)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        inflater.inflate(R.menu.menu_countries, menu)
+
+        // Associate searchable configuration with the SearchView
+        val searchManager = context?.getSystemService(SEARCH_SERVICE) as SearchManager?
+        val searchView = menu.findItem(R.id.action_search).actionView as SearchView
+        searchView.setSearchableInfo(searchManager!!.getSearchableInfo(activity?.componentName))
+        searchView.maxWidth = Integer.MAX_VALUE
+
+        // listening to search query text change
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                // filter recycler view when query submitted
+                countriesAdapter.filter.filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(query: String): Boolean {
+                // filter recycler view when text is changed
+                countriesAdapter.filter.filter(query)
+                return false
+            }
+        })
+    }
+
 }
