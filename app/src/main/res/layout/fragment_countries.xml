@@ -15,7 +15,7 @@
             android:id="@+id/emptyView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@mipmap/ic_launcher"
             android:visibility="gone"
             android:scaleType="center"
             android:paddingBottom="160dp"
