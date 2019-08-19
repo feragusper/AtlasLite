@@ -8,6 +8,7 @@ import com.feragusper.atlaslite.common.extension.inflate
 import com.feragusper.atlaslite.common.navigation.Navigator
 import com.feragusper.atlaslite.countries.domain.Country
 import kotlinx.android.synthetic.main.view_item_country.view.*
+import com.feragusper.atlaslite.countries.extension.loadCountryFlag
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -19,8 +20,6 @@ class CountriesAdapter
     }
 
     internal var itemClickListener: (Country, Navigator.Extras) -> Unit = { _, _ -> }
-
-    internal var favoriteButtonClickListener: (Country, Boolean) -> Unit = { _, _ -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(parent.inflate(R.layout.view_item_country))
@@ -39,6 +38,7 @@ class CountriesAdapter
             itemClickListener: (Country, Navigator.Extras) -> Unit
         ) {
             itemView.countryName.text = country.name
+            itemView.countryFlag.loadCountryFlag(country)
             itemView.setOnClickListener { itemClickListener(country, Navigator.Extras(itemView)) }
         }
     }

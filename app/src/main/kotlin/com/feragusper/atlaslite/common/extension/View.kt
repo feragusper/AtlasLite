@@ -2,6 +2,7 @@ package com.feragusper.atlaslite.common.extension
 
 import android.graphics.drawable.Drawable
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,11 +25,14 @@ fun View.invisible() {
     this.visibility = View.GONE
 }
 
-fun ImageView.loadFromUrl(url: String?) =
+fun ImageView.loadFromUriString(uri: String) {
+    Log.i("ImageView", "loading image with uri $uri")
+
     Glide.with(this.context.applicationContext)
-        .load(url)
+        .load(uri)
         .transition(DrawableTransitionOptions.withCrossFade())
-        .into(this)!!
+        .into(this)
+}
 
 fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
     LayoutInflater.from(context).inflate(layoutRes, this, false)

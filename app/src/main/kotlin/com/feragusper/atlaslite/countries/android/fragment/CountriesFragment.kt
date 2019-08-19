@@ -1,6 +1,7 @@
 package com.feragusper.atlaslite.countries.android.fragment
 
 import android.os.Bundle
+import android.os.Environment
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -45,7 +46,7 @@ class CountriesFragment : BaseFragment() {
 
 
     private fun initializeView() {
-        countryList.layoutManager = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+        countryList.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
         countryList.adapter = countriesAdapter
         countriesAdapter.itemClickListener = { country, navigationExtras ->
             TODO("not implemented") //To change body of created functions use File | Settings | File Templates.

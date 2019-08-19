@@ -4,13 +4,15 @@ import com.feragusper.atlaslite.common.extension.empty
 
 data class Country(
     val id: Int,
-    val name: String
+    val name: String,
+    val code: String
 ) {
 
     companion object {
         fun empty() = Country(
             id = 0,
-            name = String.empty()
+            name = String.empty(),
+            code = String.empty()
         )
     }
 }
