@@ -5,5 +5,9 @@ import com.feragusper.atlaslite.common.extension.loadFromUriString
 import com.feragusper.atlaslite.countries.domain.Country
 
 fun ImageView.loadCountryFlag(country: Country) {
-    loadFromUriString("file:///android_asset/${country.code.toLowerCase()}.png")
+    loadFromUriString(country.makeCountryFlagUri())
+}
+
+fun Country.makeCountryFlagUri(): String {
+    return "file:///android_asset/${code.toLowerCase()}.png"
 }

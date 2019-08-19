@@ -8,5 +8,5 @@ import javax.inject.Inject
 class GetCountriesUseCase
 @Inject constructor(private val countriesRepository: CountriesRepository) : UseCase<List<Country>, UseCase.None>() {
 
-    override suspend fun run(params: None) = countriesRepository.movies()
+    override suspend fun run(params: None) = countriesRepository.countries()
 }

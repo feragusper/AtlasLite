@@ -6,4 +6,11 @@
     <string name="action_refresh">Refresh</string>
     <string name="countries_screen_title">Countries</string>
     <string name="country_transition_flag">Country Transition Flag</string>
+    <string name="country_details_screen_title">Country Details</string>
+    <string name="failure_country_non_existent">Country Non Existent</string>
+    <string name="capital">Capital</string>
+    <string name="region">Region</string>
+    <string name="population">Population</string>
+    <string name="demonym">Demomym</string>
+    <string name="area">Area</string>
 </resources>

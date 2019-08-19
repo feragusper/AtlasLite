@@ -1,18 +1,15 @@
 package com.feragusper.atlaslite.countries.domain
 
-import com.feragusper.atlaslite.common.extension.empty
-
 data class Country(
-    val id: Int,
+    val id: String,
     val name: String,
-    val code: String
-) {
-
-    companion object {
-        fun empty() = Country(
-            id = 0,
-            name = String.empty(),
-            code = String.empty()
-        )
-    }
-}
+    val code: String,
+    val capital: String,
+    val callingCodes: List<String>,
+    val region: String,
+    val subregion: String,
+    val population: Int,
+    val demonym: String,
+    val area: Float,
+    val timezones: List<String>
+)

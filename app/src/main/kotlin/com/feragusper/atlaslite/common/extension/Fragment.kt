@@ -24,3 +24,5 @@ inline fun <reified T : ViewModel> Fragment.viewModel(factory: Factory, body: T.
     vm.body()
     return vm
 }
+
+fun BaseFragment.close() = fragmentManager?.popBackStack()

@@ -30,5 +30,10 @@
                 android:name=".countries.android.activity.CountriesActivity"
                 android:label="@string/countries_screen_title" />
 
+        <activity
+                android:name=".countries.android.activity.CountryDetailsActivity"
+                android:label="@string/country_details_screen_title"
+                android:theme="@style/AppTheme.Translucent"/>
+
     </application>
 </manifest>

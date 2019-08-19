@@ -7,27 +7,24 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * A cache for holding [Movie]s between Activities/Fragments.
+ * A cache for holding [Country]s between Activities/Fragments.
  *
  * In order to get a cleaner architecture, we pass around as little data as possible,
- * in the case of a [Movie], that's a [MovieId].
+ * in the case of a [Country], that's a [Country]'s Id.
  *
- * Then, the data is provided to components based on the [MovieId].
+ * Then, the data is provided to components based on the [Country]'s Id.
  *
  */
 @Singleton
 class CountriesCache @Inject constructor(val context: Context) {
 
-    private val cache = LruCache<Int, Country>(1000)
-
-    val hasMovies: Boolean
-        get() = cache.size() != 0
+    private val cache = LruCache<String, Country>(1000)
 
     fun put(country: Country) {
         cache.put(country.id, country)
     }
 
-    operator fun get(id: Int) = cache.get(id)
+    operator fun get(id: String) = cache.get(id)
 
     fun putAll(countries: List<Country>) {
         countries.forEach { country ->

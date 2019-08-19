@@ -10,14 +10,14 @@ import javax.inject.Singleton
 
 @Singleton
 class CountriesViewModel
-@Inject constructor(private val getMoviesUseCase: GetCountriesUseCase) : BaseViewModel() {
+@Inject constructor(private val getCountriesUseCase: GetCountriesUseCase) : BaseViewModel() {
 
     var countries: MutableLiveData<List<Country>> = MutableLiveData()
 
-    fun loadCountries() = getMoviesUseCase(UseCase.None()) { it.either(::handleFailure, ::handleMovieList) }
+    fun loadCountries() = getCountriesUseCase(UseCase.None()) { it.either(::handleFailure, ::handleCountryList) }
 
-    private fun handleMovieList(movies: List<Country>) {
-        this.countries.value = movies
+    private fun handleCountryList(countries: List<Country>) {
+        this.countries.value = countries
     }
 
 }

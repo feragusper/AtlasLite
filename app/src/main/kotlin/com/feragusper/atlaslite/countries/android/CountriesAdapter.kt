@@ -7,8 +7,8 @@ import com.feragusper.atlaslite.R
 import com.feragusper.atlaslite.common.extension.inflate
 import com.feragusper.atlaslite.common.navigation.Navigator
 import com.feragusper.atlaslite.countries.domain.Country
-import kotlinx.android.synthetic.main.view_item_country.view.*
 import com.feragusper.atlaslite.countries.extension.loadCountryFlag
+import kotlinx.android.synthetic.main.view_item_country.view.*
 import javax.inject.Inject
 import kotlin.properties.Delegates
 
@@ -39,7 +39,7 @@ class CountriesAdapter
         ) {
             itemView.countryName.text = country.name
             itemView.countryFlag.loadCountryFlag(country)
-            itemView.setOnClickListener { itemClickListener(country, Navigator.Extras(itemView)) }
+            itemView.setOnClickListener { itemClickListener(country, Navigator.Extras(itemView.countryFlag)) }
         }
     }
 }

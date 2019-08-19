@@ -4,6 +4,7 @@ import com.feragusper.atlaslite.common.AtlasLiteApplication
 import com.feragusper.atlaslite.common.di.viewmodel.ViewModelModule
 import com.feragusper.atlaslite.common.navigation.RouteActivity
 import com.feragusper.atlaslite.countries.android.fragment.CountriesFragment
+import com.feragusper.atlaslite.countries.android.fragment.CountryDetailsFragment
 import dagger.Component
 import javax.inject.Singleton
 
@@ -16,4 +17,5 @@ interface ApplicationComponent {
     fun inject(application: AtlasLiteApplication)
     fun inject(application: RouteActivity)
     fun inject(countriesFragment: CountriesFragment)
+    fun inject(countryDetailsFragment: CountryDetailsFragment)
 }
