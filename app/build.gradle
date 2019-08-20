@@ -4,18 +4,24 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    def config = rootProject.extensions.getByName("ext")
+
+    compileSdkVersion config["compile_sdk"]
     buildToolsVersion "29.0.0"
+
     defaultConfig {
-        applicationId "com.feragusper.atlaslite"
-        minSdkVersion 15
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId config["application_id"]
+        minSdkVersion config["min_sdk"]
+        targetSdkVersion config["target_sdk"]
+        versionCode config["version_code"]
+        versionName config["version_name"]
+        testInstrumentationRunner config["test_runner"]
 
         buildConfigField 'String', 'COUNTRIES_API_HOST', '\"https://restcountries.eu/rest/v2/\"'
     }
+
+
+
     buildTypes {
         release {
             minifyEnabled false
@@ -34,6 +40,8 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     def applicationDependencies = rootProject.ext.mainApplication
     def developmentDependencies = rootProject.ext.development
+    def unitTestDependencies = rootProject.ext.unitTesting
+    def acceptanceTestDependencies = rootProject.ext.acceptanceTesting
 
     //Compile time dependencies
     kapt applicationDependencies.archComponentsCompiler
@@ -56,6 +64,21 @@ dependencies {
     implementation applicationDependencies.dagger
     implementation applicationDependencies.retrofit
     implementation applicationDependencies.okhttpLoggingInterceptor
+
+    //Unit/Integration tests dependencies
+    testImplementation unitTestDependencies.kotlin
+    testImplementation unitTestDependencies.kotlinTest
+    testImplementation unitTestDependencies.robolectric
+    testImplementation unitTestDependencies.junit
+    testImplementation unitTestDependencies.mockito
+    testImplementation unitTestDependencies.kluent
+
+    //Acceptance tests dependencies
+    androidTestImplementation acceptanceTestDependencies.testRunner
+    androidTestImplementation acceptanceTestDependencies.testRules
+    androidTestImplementation acceptanceTestDependencies.espressoCore
+    androidTestImplementation acceptanceTestDependencies.espressoIntents
+    androidTestImplementation acceptanceTestDependencies.androidAnnotations
 
     //Development dependencies
     debugImplementation developmentDependencies.leakCanary

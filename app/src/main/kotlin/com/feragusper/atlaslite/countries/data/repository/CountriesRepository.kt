@@ -33,7 +33,7 @@ interface CountriesRepository {
         }
 
         override fun countryDetails(id: String): Either<Failure, Country> {
-            val country = countriesCache.get(id)
+            val country = countriesCache[id]
             return when (country) {
                 is Country -> Either.Right(country)
                 else -> Either.Left(CountryFailure.NonExistentCountry)

@@ -5,7 +5,6 @@ package com.feragusper.atlaslite.common.exception
  * Every feature specific failure should extend [FeatureFailure] class.
  */
 sealed class Failure {
-    object NetworkConnection : Failure()
     object ServerError : Failure()
 
     abstract class FeatureFailure : Failure()

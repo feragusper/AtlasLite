@@ -68,9 +68,7 @@ class CountryDetailsFragment : BaseFragment() {
     }
 
     override fun onBackPressed() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            countryDetailsAnimator.fadeInvisible(scrollView, countryDetails)
-        }
+        countryDetailsAnimator.fadeInvisible(scrollView, countryDetails)
     }
 
     @SuppressLint("SetTextI18n")
@@ -88,16 +86,11 @@ class CountryDetailsFragment : BaseFragment() {
                 countryArea.text = "${country.area}"
             }
         }
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            countryDetailsAnimator.fadeVisible(scrollView, countryDetails)
-        }
+        countryDetailsAnimator.fadeVisible(scrollView, countryDetails)
     }
 
     private fun handleFailure(failure: Failure?) {
         when (failure) {
-            is Failure.NetworkConnection -> {
-                notify(R.string.failure_network_connection); close()
-            }
             is Failure.ServerError -> {
                 notify(R.string.failure_server_error); close()
             }

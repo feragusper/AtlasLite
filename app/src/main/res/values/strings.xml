@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">AtlasLite</string>
-    <string name="failure_network_connection">Network Connection Error</string>
     <string name="failure_server_error">Server Error</string>
     <string name="failure_country_list_unavailable">List Unavailable</string>
     <string name="action_refresh">Refresh</string>

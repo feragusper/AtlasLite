@@ -74,7 +74,6 @@ class CountriesFragment : BaseFragment() {
 
     private fun handleFailure(failure: Failure?) {
         when (failure) {
-            is Failure.NetworkConnection -> renderFailure(R.string.failure_network_connection)
             is Failure.ServerError -> renderFailure(R.string.failure_server_error)
             is CountryFailure.ListNotAvailable -> renderFailure(R.string.failure_country_list_unavailable)
         }

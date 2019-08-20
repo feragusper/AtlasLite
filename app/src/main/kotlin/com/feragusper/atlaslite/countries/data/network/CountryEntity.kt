@@ -3,7 +3,6 @@ package com.feragusper.atlaslite.countries.data.network
 import com.feragusper.atlaslite.countries.domain.Country
 
 data class CountryEntity(
-    private val id: Int,
     private val name: String,
     private val alpha2Code: String,
     private val alpha3Code: String,

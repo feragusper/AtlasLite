@@ -20,6 +20,16 @@ ext {
   retrofit_version = '2.3.0'
   okhttp_logging_interceptor_version = '3.8.1'
 
+  //Unit Testing
+  robolectric_version = '3.8'
+  junit_version = '4.12'
+  mockito_version = '1.4.0'
+  kluent_version = '1.14'
+
+  //Acceptance Testing
+  runner_version = '1.0.2-alpha1'
+  espresso_version = '3.1.0'
+
   //Development
   leakCanaryVersion = '1.5'
 
@@ -42,6 +52,23 @@ ext {
       javaxInject:                "javax.inject:javax.inject:$javaxInject_version",
       retrofit:                   "com.squareup.retrofit2:converter-gson:$retrofit_version",
       okhttpLoggingInterceptor:   "com.squareup.okhttp3:logging-interceptor:$okhttp_logging_interceptor_version",
+  ]
+
+  unitTesting = [
+          kotlin:             "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+          kotlinTest:         "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version",
+          robolectric:        "org.robolectric:robolectric:$robolectric_version",
+          junit:              "junit:junit:$junit_version",
+          mockito:            "com.nhaarman:mockito-kotlin:$mockito_version",
+          kluent:             "org.amshove.kluent:kluent:$kluent_version",
+  ]
+
+  acceptanceTesting = [
+          testRunner:         "androidx.test:runner:$runner_version",
+          testRules:          "androidx.test:rules:$runner_version",
+          espressoCore:       "androidx.test.espresso:espresso-core:$espresso_version",
+          espressoIntents:    "androidx.test.espresso:espresso-intents:$espresso_version",
+          androidAnnotations: "androidx.annotation:annotation:$appCompat_version",
   ]
 
   development = [
