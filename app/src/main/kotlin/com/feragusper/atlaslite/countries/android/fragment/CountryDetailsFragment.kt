@@ -16,6 +16,7 @@ import com.feragusper.atlaslite.countries.extension.loadCountryFlag
 import com.feragusper.atlaslite.countries.extension.makeCountryFlagUri
 import kotlinx.android.synthetic.main.fragment_country_details.*
 import kotlinx.android.synthetic.main.toolbar.*
+import java.text.DecimalFormat
 import javax.inject.Inject
 
 class CountryDetailsFragment : BaseFragment() {
@@ -81,9 +82,9 @@ class CountryDetailsFragment : BaseFragment() {
                 }
                 countryCapital.text = country.capital
                 countryRegion.text = "${country.region} / ${country.subregion}"
-                countryPopulation.text = "${country.population}"
+                countryPopulation.text = DecimalFormat("#,###").format(country.population)
                 countryDemonym.text = country.demonym
-                countryArea.text = "${country.area}"
+                countryArea.text = "${DecimalFormat("#,###.##").format(country.area)} km²"
             }
         }
         countryDetailsAnimator.fadeVisible(scrollView, countryDetails)
